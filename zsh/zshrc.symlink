@@ -5,9 +5,6 @@ typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 # disable the update prompt and perform an auto-update
 export DISABLE_UPDATE_PROMPT=true
 
-# your project folder that we can `c [tab]` to
-export PROJECTS=/mnt/d/projects
-
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -78,3 +75,26 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+eval "$(rbenv init - zsh)"
+
+export PATH="$PATH:$HOME/development/third-party"
+
+[[ "$TERM_PROGRAM" == "vscode" ]] && . "$(code --locate-shell-integration-path zsh)"
+
+export PATH="$HOME/.local/bin:$PATH"
+
+# Homebrew auto-cleanup after install/upgrade
+export HOMEBREW_CLEANUP_MAX_AGE_DAYS=30
+export HOMEBREW_AUTOREMOVE=1
+
+
+
+# kimi-code
+export PATH="/Users/kounex/.kimi-code/bin:$PATH"
+
+[ -f "/Users/kounex/.config/claude-code-vertex/env.sh" ] && . "/Users/kounex/.config/claude-code-vertex/env.sh"
+
